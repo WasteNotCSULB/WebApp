@@ -35,7 +35,7 @@ router.post('/signup', (req, res, next) => {
 
     res.json({
       success: true,
-      message: 'Enjoy your token',
+      message: 'Sign up successful. Enjoy your token',
       token: token
     });
   }
@@ -70,7 +70,7 @@ router.post('/login', (req, res, next) => {
 
         res.json({
           success: true,
-          message: "Enjoy your token",
+          message: "Login successful. Enjoy your token",
           token: token
         });
       }
