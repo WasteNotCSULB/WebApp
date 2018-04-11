@@ -4,6 +4,7 @@ const Category = require('../models/category');
 const Product = require('../models/product');
 const Item = require('../models/item');
 
+
 // amazono
 router.get('/products', (req, res, next) => {
   const perPage = 10;
@@ -68,6 +69,7 @@ router.get('/itemsZ', (req, res, next) => {
     var totalItems = results[0];
     var items = results[1];
 
+
     res.json({
       success: true,
       message: 'category',
@@ -112,6 +114,7 @@ router.route('/categories')
   });
 
 // amazono
+
   router.get('/categories/:id', (req, res, next) => {
     const perPage = 10;
     const page = req.query.page;
@@ -156,6 +159,7 @@ router.route('/categories')
 
   // waste not
  // status: good
+
     router.get('/categoriesZ/:id', (req, res, next) => {
       const perPage = 10;
       const page = req.query.page;
@@ -164,6 +168,7 @@ router.route('/categories')
           Item.count({ category: req.params.id }, (err, count) => {
             var totalItems = count;
             callback(err, totalItems);
+
           });
         },
         function(callback) {
@@ -199,6 +204,7 @@ router.route('/categories')
 
 
     // amazono
+
   router.get('/product/:id', (req, res, next) => {
     Product.findById({ _id: req.params.id })
       .populate('category')
@@ -223,6 +229,7 @@ router.route('/categories')
   // wastenot
   router.get('/item/:id', (req, res, next) => {
     Item.findById({ _id: req.params.id })
+
       .populate('category')
       .exec((err, item) => {
         if (err) {
