@@ -18,6 +18,8 @@ import { DataService } from './data.service';
 import { MessageComponent } from './message/message.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth-guard.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     CategoriesComponent,
     MessageComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [RestApiService, DataService],
+  providers: [RestApiService, DataService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
