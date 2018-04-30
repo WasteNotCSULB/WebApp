@@ -22,6 +22,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegistrationComponent,
     ProfileComponent
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

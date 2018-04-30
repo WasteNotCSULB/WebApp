@@ -12,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { AuthGuardService } from './auth-guard.service';
 
+import { AuthGuardService } from './auth-guard.service';
+
 
 
 const routes: Routes = [
