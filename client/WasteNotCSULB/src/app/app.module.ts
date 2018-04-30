@@ -19,6 +19,7 @@ import { MessageComponent } from './message/message.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
     MessageComponent,
     RegistrationComponent,
     LoginComponent
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
