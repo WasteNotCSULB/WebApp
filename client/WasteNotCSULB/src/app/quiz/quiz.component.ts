@@ -10,6 +10,8 @@ import { DataService } from '../data.service';
 })
 export class QuizComponent implements OnInit {
 
+  idx : number = 0;
+
   items: any = null;
   question1: any = '';
   objTEST: any = null;
@@ -53,6 +55,10 @@ export class QuizComponent implements OnInit {
       } catch (error) {
         this.data.error(error['message']);
       }
+    }
+
+    myFunction(){
+      this.idx += 1;
     }
 
 }
