@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
@@ -11,6 +11,9 @@ import { DataService } from '../data.service';
 export class QuizComponent implements OnInit {
 
   idx : number = 0;
+
+  btnDisabled = false;
+
 
   items: any = null;
   question1: any = '';
@@ -58,7 +61,15 @@ export class QuizComponent implements OnInit {
     }
 
     myFunction(){
+      
+      if (this.idx > 10) {
+        this.btnDisabled = true;
+      } else {
+
       this.idx += 1;
+
+      }
+
     }
 
 }
