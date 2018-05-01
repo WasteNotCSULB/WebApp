@@ -33,9 +33,7 @@ export class QuizComponent implements OnInit {
         data['success']
           ? (this.items = data['items'])
           : this.data.error(data['message']);
-        //data['success']
-        //  ? (this.question1 = this.items[0])
-        //  : console.log("TTTT error");  
+
         if(data['success']){
           this.question1 = this.items[0];
           var obj2 = {
@@ -47,10 +45,6 @@ export class QuizComponent implements OnInit {
            console.log(JSON.stringify(element));
 
          });
-        //  this.objTEST = Object.assign(this.items, this.obj3 );
-        //  console.log("dfdfd " + this.objTEST);
-        //  console.log(JSON.stringify(this.objTEST));
-       // console.log(JSON.stringify(this.items));
 
 
         } else {
