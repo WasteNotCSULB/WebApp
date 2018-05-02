@@ -15,28 +15,11 @@ export class QuizComponent implements OnInit {
 
   btnDisabled = true;
 
-
   items: any = null;
-  objTEST: any = null;
-
-  obj3: any = [{
-    answered: false
-  }];
 
   obj4: any = {
     answered: false
   }
-
-  question0: any = '';
-  question1: any = '';
-  question2: any = '';
-  question3: any = '';
-  question4: any = '';
-  question5: any = '';
-  question6: any = '';
-  question7: any = '';
-  question8: any = '';
-  question9: any = '';
 
   questionResultRight: any = null;
   questionResultWrong: any = null;
@@ -60,10 +43,7 @@ export class QuizComponent implements OnInit {
           : this.data.error(data['message']);
 
         if(data['success']){
-         // this.question1 = this.items[0];
-          var obj2 = {
-            answered : false
-          }
+     
           this.items.forEach(element => {
            element= Object.assign(element, this.obj4 );
 
@@ -83,7 +63,6 @@ export class QuizComponent implements OnInit {
     myFunction(){
       
       if (this.idx >= 9) {
-      //  this.btnDisabled = true;
         this.quizFinished = true;
       } 
       this.btnDisabled = true;
@@ -96,34 +75,25 @@ export class QuizComponent implements OnInit {
 
       var tempChoice: string = '';
       
-       console.log("8383submitAnswer " + itemIndex);
-       console.log("8383submitAnswer2 " + choiceNum);
+  
 
        if(choiceNum === 7){
-        console.log("8383submit Compost");
         tempChoice = 'compost';
        }
        if(choiceNum === 8){
-        console.log("8383submit Recycle");
         tempChoice = 'recycle';
 
        }
        if(choiceNum === 9){
-        console.log("8383submit Landfill");
         tempChoice = 'landfill';
        }
 
-       console.log("title of item is " + this.items[itemIndex].title);
-       console.log("category of item is " + this.items[itemIndex].category.name);
-       console.log("title of tempChoice is " + tempChoice);
-       console.log("comparing item_binchoice and tempchoice:  " + tempChoice.includes(this.items[itemIndex].category.name));
+      
 
        if(tempChoice.includes(this.items[itemIndex].category.name)){
-            console.log("DING DING you are correct");
             this.questionResultRight = "correct";
             this.totalRight += 1;
        } else {
-            console.log("Incorrect choice");
             this.questionResultWrong = "incorrect";
        }
 
@@ -138,9 +108,6 @@ export class QuizComponent implements OnInit {
         this.scorePercent = 0;
        }
       
-       console.log("item answered is " + this.items[itemIndex].answered);
-       console.log("score percent " + (this.scorePercent));
-
        if(itemIndex > 9){
         this.quizFinished = true;
        }
@@ -150,7 +117,6 @@ export class QuizComponent implements OnInit {
 
     shuffle(array) : void {
 
-      console.log("444shufffling" );
       let counter = array.length;
   
       // While there are elements in the array
@@ -175,10 +141,7 @@ export class QuizComponent implements OnInit {
   }
 
   refresh() : void {
-//    this.shuffle(this.items);
- //   this.update();
- //   this.items = null;
-  //  this.idx = 0;
+
     window.location.reload();
   }
 

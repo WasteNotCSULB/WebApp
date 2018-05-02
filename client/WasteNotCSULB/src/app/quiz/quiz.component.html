@@ -1,9 +1,11 @@
 
+<section id="quizTemplate">
+    <div class="container-fluid p-5">
+
+
 <div *ngIf="items">
 
     <p *ngIf="!quizFinished"> Which bin does this item go into?</p>
-
-
 
   <div [ngSwitch]="idx">
     <p *ngSwitchCase = "0"> 1) {{items[0].title}}</p>
@@ -184,6 +186,8 @@
 </div>
 
 
+
+
 <div *ngIf="questionResultRight">
   <p class="text-success">{{questionResultRight}}</p>  
   <p>Score: {{scorePercent | number : '1.2-2'}}%</p>
@@ -194,8 +198,8 @@
     <p>Score: {{scorePercent | number : '1.2-2'}}%</p>
   </div>
 
-
-
+</div>
+</section>
 
 
 
