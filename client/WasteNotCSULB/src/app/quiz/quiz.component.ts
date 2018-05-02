@@ -175,9 +175,15 @@ export class QuizComponent implements OnInit {
   }
 
   refresh() : void {
-    this.shuffle(this.items);
+//    this.shuffle(this.items);
+    this.update();
+
     window.location.reload();
   }
+
+  update() : void {
+    this.ngOnInit();
+} 
 
 
 }

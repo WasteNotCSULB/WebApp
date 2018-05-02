@@ -17,7 +17,7 @@ router.get('/items', (req, res, next) => {
       });
     },
     function(callback) {
-      Item.find({})
+      Item.find({}).collation({locale:'en',strength: 2}).sort({title:1})
         .skip(perPage * page)
         .limit(perPage)
         .populate('category')
