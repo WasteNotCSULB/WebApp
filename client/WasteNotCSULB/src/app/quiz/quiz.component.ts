@@ -42,6 +42,8 @@ export class QuizComponent implements OnInit {
   totalRight: number = 0.0;
   scorePercent: number = 0.0;
 
+  quizFinished: boolean = false;
+
   constructor( 
     private data: DataService,
     private rest: RestApiService) { }
@@ -78,17 +80,14 @@ export class QuizComponent implements OnInit {
 
     myFunction(){
       
-      if (this.idx > 10) {
-        this.btnDisabled = true;
-      } else {
-
-      this.idx += 1;
+      if (this.idx >= 9) {
+      //  this.btnDisabled = true;
+        this.quizFinished = true;
+      } 
       this.btnDisabled = true;
       this.questionResultRight = null;
       this.questionResultWrong = null;
-
-      }
-
+      this.idx += 1;
     }
 
     submitAnswer(itemIndex: number, choiceNum: number ){
@@ -139,6 +138,11 @@ export class QuizComponent implements OnInit {
       
        console.log("item answered is " + this.items[itemIndex].answered);
        console.log("score percent " + (this.scorePercent));
+
+       if(itemIndex > 9){
+        this.quizFinished = true;
+       }
+  
     }
 
 
