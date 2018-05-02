@@ -175,6 +175,7 @@ export class QuizComponent implements OnInit {
   }
 
   refresh() : void {
+    this.shuffle(this.items);
     window.location.reload();
   }
 
