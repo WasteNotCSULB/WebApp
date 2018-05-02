@@ -12,11 +12,10 @@ export class QuizComponent implements OnInit {
 
   idx : number = 0;
 
-  btnDisabled = false;
+  btnDisabled = true;
 
 
   items: any = null;
-  question1: any = '';
   objTEST: any = null;
 
   obj3: any = [{
@@ -26,6 +25,21 @@ export class QuizComponent implements OnInit {
   obj4: any = {
     answered: false
   }
+
+  question0: any = '';
+  question1: any = '';
+  question2: any = '';
+  question3: any = '';
+  question4: any = '';
+  question5: any = '';
+  question6: any = '';
+  question7: any = '';
+  question8: any = '';
+  question9: any = '';
+
+
+
+
   constructor( 
     private data: DataService,
     private rest: RestApiService) { }
@@ -40,7 +54,7 @@ export class QuizComponent implements OnInit {
           : this.data.error(data['message']);
 
         if(data['success']){
-          this.question1 = this.items[0];
+         // this.question1 = this.items[0];
           var obj2 = {
             answered : false
           }
@@ -67,10 +81,46 @@ export class QuizComponent implements OnInit {
       } else {
 
       this.idx += 1;
+      this.btnDisabled = true;
 
       }
 
     }
+
+    submitAnswer(itemIndex: number, choiceNum: number ){
+
+      var tempChoice: string = '';
+      
+       console.log("8383submitAnswer " + itemIndex);
+       console.log("8383submitAnswer2 " + choiceNum);
+
+       if(choiceNum === 7){
+        console.log("8383submit Compost");
+        tempChoice = 'compost';
+       }
+       if(choiceNum === 8){
+        console.log("8383submit Recycle");
+        tempChoice = 'recycle';
+
+       }
+       if(choiceNum === 9){
+        console.log("8383submit Landfill");
+        tempChoice = 'landfill';
+       }
+
+       console.log("title of item is " + this.items[itemIndex].title);
+       console.log("category of item is " + this.items[itemIndex].category.name);
+       console.log("title of tempChoice is " + tempChoice);
+       console.log("comparing item_binchoice and tempchoice:  " + tempChoice.includes(this.items[itemIndex].category.name));
+
+       this.items[itemIndex].answered = true;
+       if( this.items[itemIndex].answered ) {
+         this.btnDisabled = false;
+       }
+       console.log("item answered is " + this.items[itemIndex].answered);
+
+    }
+
 
 }
 
