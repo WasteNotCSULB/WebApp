@@ -3,7 +3,7 @@
 
                 <div *ngIf="items">
 
-                    <h2 *ngIf="!quizFinished"> Which bin does this item go into?</h2>
+                    <h2 *ngIf="!quizFinished"> Which bin should this item go into?</h2>
 
                 <div [ngSwitch]="idx">
                     <h3 *ngSwitchCase = "0"> 1) {{items[0].title}}</h3>
