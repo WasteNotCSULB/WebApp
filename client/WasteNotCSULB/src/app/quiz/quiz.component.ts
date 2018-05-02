@@ -37,7 +37,8 @@ export class QuizComponent implements OnInit {
   question8: any = '';
   question9: any = '';
 
-  questionResult: any = null;
+  questionResultRight: any = null;
+  questionResultWrong: any = null;
   totalRight: number = 0.0;
   scorePercent: number = 0.0;
 
@@ -83,7 +84,9 @@ export class QuizComponent implements OnInit {
 
       this.idx += 1;
       this.btnDisabled = true;
-      this.questionResult = null;
+      this.questionResultRight = null;
+      this.questionResultWrong = null;
+
       }
 
     }
@@ -116,11 +119,11 @@ export class QuizComponent implements OnInit {
 
        if(tempChoice.includes(this.items[itemIndex].category.name)){
             console.log("DING DING you are correct");
-            this.questionResult = "correct";
+            this.questionResultRight = "correct";
             this.totalRight += 1;
        } else {
             console.log("Incorrect choice");
-            this.questionResult = "incorrect";
+            this.questionResultWrong = "incorrect";
        }
 
        this.items[itemIndex].answered = true;

@@ -19,9 +19,12 @@
     <p (click)="submitAnswer(1, 8)" *ngSwitchCase = "1"> Click here Recycle Choice </p>
     <p (click)="submitAnswer(1, 9)" *ngSwitchCase = "1"> Click here Landfill Choice </p>
 
+    <p  *ngSwitchCase = "2"> 3rd element or 2nd index {{items[2].title}}</p>
+    <p  *ngSwitchCase = "2"> Correct Choice is  {{items[2].category.name}}</p>
+    <p (click)="submitAnswer(2, 7)" *ngSwitchCase = "2"> Click here for Compost Choice </p>
+    <p (click)="submitAnswer(2, 8)" *ngSwitchCase = "2"> Click here Recycle Choice </p>
+    <p (click)="submitAnswer(2, 9)" *ngSwitchCase = "2"> Click here Landfill Choice </p>
 
-
-    <p *ngSwitchCase = "2"> 3rd element or 2 index</p>
     <p *ngSwitchCase = "3"> 4th element or 3 index</p>
     <p *ngSwitchCase = "4"> 5th element or 4 index</p>
     <p *ngSwitchCase = "5"> 6th element or 5th index</p>
@@ -37,10 +40,16 @@
   </div>
 </div>
 
-<div *ngIf="questionResult">
-  <p>{{questionResult}}</p>  
-  <p>Score {{scorePercent + "%"}}</p>
+<div *ngIf="questionResultRight">
+  <p class="text-success">{{questionResultRight}}</p>  
+  <p>Score: {{scorePercent | number : '1.2-2'}}%</p>
+
 </div>
+
+<div *ngIf="questionResultWrong">
+    <p class="text-danger" >{{questionResultWrong}}</p>  
+    <p>Score: {{scorePercent | number : '1.2-2'}}%</p>
+  </div>
 
 
 
