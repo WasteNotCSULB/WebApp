@@ -11,13 +11,13 @@
     <p  *ngSwitchCase = "0"> Correct Choice is  {{items[0].category.name}}</p>
     <p (click)="submitAnswer(0, 7)" *ngSwitchCase = "0"> Click here for Compost Choice </p>
     <p (click)="submitAnswer(0, 8)" *ngSwitchCase = "0"> Click here Recycle Choice </p>
-    <p (click)="submitAnswer(0, 9)" *ngSwitchCase = "0"> Click herer Landfill Choice </p>
+    <p (click)="submitAnswer(0, 9)" *ngSwitchCase = "0"> Click here Landfill Choice </p>
 
-    <p (click)="submitAnswer(1, -3)" *ngSwitchCase = "1"> 2nd element or 1 index {{items[1].title}}</p>
+    <p  *ngSwitchCase = "1"> 2nd element or 1 index {{items[1].title}}</p>
     <p  *ngSwitchCase = "1"> Correct Choice is  {{items[1].category.name}}</p>
     <p (click)="submitAnswer(1, 7)" *ngSwitchCase = "1"> Click here for Compost Choice </p>
     <p (click)="submitAnswer(1, 8)" *ngSwitchCase = "1"> Click here Recycle Choice </p>
-    <p (click)="submitAnswer(1, 9)" *ngSwitchCase = "1"> Click herer Landfill Choice </p>
+    <p (click)="submitAnswer(1, 9)" *ngSwitchCase = "1"> Click here Landfill Choice </p>
 
 
 
@@ -32,10 +32,16 @@
     <p *ngSwitchCase = "10"> 11th element or 10 index Summary</p>
 
 
-    <button type="button" (click)="myFunction()" [disabled]="btnDisabled" >Count!</button>
+    <button type="button" (click)="myFunction()" [disabled]="btnDisabled" >Next Question</button>
 
   </div>
 </div>
+
+<div *ngIf="questionResult">
+  <p>{{questionResult}}</p>  
+  <p>Score {{scorePercent + "%"}}</p>
+</div>
+
 
 
 

@@ -37,8 +37,9 @@ export class QuizComponent implements OnInit {
   question8: any = '';
   question9: any = '';
 
-
-
+  questionResult: any = null;
+  totalRight: number = 0.0;
+  scorePercent: number = 0.0;
 
   constructor( 
     private data: DataService,
@@ -82,7 +83,7 @@ export class QuizComponent implements OnInit {
 
       this.idx += 1;
       this.btnDisabled = true;
-
+      this.questionResult = null;
       }
 
     }
@@ -113,12 +114,28 @@ export class QuizComponent implements OnInit {
        console.log("title of tempChoice is " + tempChoice);
        console.log("comparing item_binchoice and tempchoice:  " + tempChoice.includes(this.items[itemIndex].category.name));
 
+       if(tempChoice.includes(this.items[itemIndex].category.name)){
+            console.log("DING DING you are correct");
+            this.questionResult = "correct";
+            this.totalRight += 1;
+       } else {
+            console.log("Incorrect choice");
+            this.questionResult = "incorrect";
+       }
+
        this.items[itemIndex].answered = true;
        if( this.items[itemIndex].answered ) {
          this.btnDisabled = false;
        }
-       console.log("item answered is " + this.items[itemIndex].answered);
 
+       if (this.totalRight > 0){
+        this.scorePercent = (this.totalRight/(itemIndex + 1) * 100); 
+       } else {
+        this.scorePercent = 0;
+       }
+      
+       console.log("item answered is " + this.items[itemIndex].answered);
+       console.log("score percent " + (this.scorePercent));
     }
 
 
