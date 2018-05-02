@@ -121,7 +121,7 @@ router.get('/faker/CompostItemFive',(req, res, next) => {
   }
 
   res.json({
-    message: "Successfully added 5 compost items";
+    message: "Successfully added 5 compost items"
   });
 
 });
