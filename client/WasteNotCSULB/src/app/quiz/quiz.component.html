@@ -10,7 +10,6 @@
 
     <div *ngSwitchCase = "0" >
         <img [src]="items[idx].image" height = "300" width = "300">
-          <p>testing0</p>
    </div>
 
     <div class = "myClass" *ngIf = "items[0].answered && idx == 0" >  Correct choice is  {{items[0].category.name}} </div>

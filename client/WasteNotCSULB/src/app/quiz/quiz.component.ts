@@ -53,7 +53,7 @@ export class QuizComponent implements OnInit {
     async ngOnInit() {
       try {
         const data = await this.rest.get(
-          'http://localhost:3030/api/items'
+          'http://localhost:3030/api/itemsRandom'
         );
         data['success']
           ? (this.items = data['items'])
@@ -176,8 +176,9 @@ export class QuizComponent implements OnInit {
 
   refresh() : void {
 //    this.shuffle(this.items);
-    this.update();
-
+ //   this.update();
+ //   this.items = null;
+  //  this.idx = 0;
     window.location.reload();
   }
 
