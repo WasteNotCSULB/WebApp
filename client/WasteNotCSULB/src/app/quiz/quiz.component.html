@@ -179,6 +179,9 @@
 <div *ngIf="quizFinished">
     <p>Summary</p>
     <p>Final Score: {{scorePercent | number : '1.2-2'}}%</p>
+    <button type="button" (click)="exitQuiz()">Exit Quiz</button>
+    <button type="button" (click)="refresh()">Retake Quiz</button>
+
 </div>
 
 

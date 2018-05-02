@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RestApiService } from '../rest-api.service';
 import { DataService } from '../data.service';
@@ -46,7 +47,8 @@ export class QuizComponent implements OnInit {
 
   constructor( 
     private data: DataService,
-    private rest: RestApiService) { }
+    private rest: RestApiService,
+    private router: Router) { }
 
     async ngOnInit() {
       try {
@@ -165,6 +167,15 @@ export class QuizComponent implements OnInit {
           array[index] = temp;
       }
   
+  } // shuffle
+
+  exitQuiz() : void {
+    this.router.navigate(['/']);
+
+  }
+
+  refresh() : void {
+    window.location.reload();
   }
 
 
