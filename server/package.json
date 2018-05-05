@@ -9,6 +9,7 @@
   "author": "CSULB Developers",
   "license": "ISC",
   "dependencies": {
+    "algoliasearch": "^3.27.1",
     "async": "^2.6.0",
     "aws-sdk": "^2.221.1",
     "bcrypt-nodejs": "0.0.3",
