@@ -72,9 +72,8 @@ export class ItemComponent implements OnInit {
           this.data.error(error['message']);
         }
         this.btnDisabled = false;
-      }
-  } // delete
+      } // delete
+  } // class
 
 
-} //class
 
