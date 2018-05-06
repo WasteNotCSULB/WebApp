@@ -44,16 +44,17 @@
         </div>
 
 
-        <h4>{{ item._id }}</h4>
 
-       
+        <!--
+          <button type="button" class="btn btn-warning" routerLink="/item/edit/${item._id}"" [disabled]="btnDisabled">Edit</button>
+        -->
+        <button type="button" class="btn btn-warning" (click)="edit()" [disabled]="btnDisabled">Edit2</button>
+
         <button type="button" class="btn btn-danger" (click)="delete()" [disabled]="btnDisabled">Delete</button>
-
 
       </div>
     </div>
   </div>
 </section>
-
 
 

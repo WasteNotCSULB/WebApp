@@ -75,6 +75,14 @@ export class ItemComponent implements OnInit {
         this.router.navigate(['/items']);
 
       } // delete
+
+
+
+      edit(){
+        console.log("http://localhost:3030/api/item/edit" + this.item._id);
+
+         this.router.navigate(["/item/edit/" + this.item._id]);
+      }
   } // class
 
 

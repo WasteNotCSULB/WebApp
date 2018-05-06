@@ -206,7 +206,7 @@ router.route('/categories')
 
   router.delete('/itemDelete/:id', (req, res, next) => {
 
-     console.log(JSON.stringify(req.body));
+     //console.log(JSON.stringify(req.body));
      console.log(req.params.id);
      Item.remove({ _id: req.params.id }, function (err){
        if(err) {
