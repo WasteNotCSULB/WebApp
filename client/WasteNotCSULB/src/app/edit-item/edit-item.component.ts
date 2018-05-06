@@ -24,6 +24,7 @@ export class EditItemComponent implements OnInit {
   
     constructor(
       private data: DataService,
+      private data2: DataService,
       private rest: RestApiService,
       private router: Router,
       private activatedRoute: ActivatedRoute
@@ -32,14 +33,14 @@ export class EditItemComponent implements OnInit {
  
 
 
-    ngOnInit() { //ngOnInit() will be run everytime the page(item) is visited
+    async ngOnInit() { //ngOnInit() will be run everytime the page(item) is visited
       this.activatedRoute.params.subscribe(res => {
         this.rest
           .get(`http://localhost:3030/api/item/${res['id']}`)
           .then(data => {
             data['success']
               ? (this.item = data['item'])
-              : this.router.navigate(['/']);
+              : this.router.navigate(['/news']);
             if(data['success']){
               console.log(  "ngOnInit in editItem component"
               );
@@ -48,8 +49,38 @@ export class EditItemComponent implements OnInit {
           })
           .catch(error => this.data.error(error['message']));
       });
+
+      try {
+        const data2 = await this.rest.get(
+          'http://localhost:3030/api/categories'
+        );
+        data2['success']
+          ? (this.categories = data2['categories'])
+          : this.data.error(data2['message']);
+
+        console.log(this.categories);
+      } catch (error) {
+        this.data.error(error['message']);
+      }
+
     }; //ngOnInit
   
+
+    /*
+    try {
+      const data2 = await this.rest.get(
+        'http://localhost:3030/api/categories'
+      );
+      data2['success']
+        ? (this.categories = data2['categories'])
+        : this.data.error(data2['message']);
+    } catch (error) {
+      this.data.error(error['message']);
+    }
+
+*/
+
+
     validate(item) {
   
      // console.log("33post-item " + item);
