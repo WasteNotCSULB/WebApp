@@ -16,9 +16,16 @@ export class EditItemComponent implements OnInit {
       title: '',
       categoryId: '',
       description: '',
-      item_picture: ''
+      item_picture: '',
+      image: ''
     };
-  
+
+    currentCategoryID: any = null;
+    currentCategoryName: any = null;
+
+    itemID : any = null;
+    itemIDstr : string = null;
+
     categories: any;
     btnDisabled = false;
   
@@ -42,9 +49,29 @@ export class EditItemComponent implements OnInit {
               ? (this.item = data['item'])
               : this.router.navigate(['/news']);
             if(data['success']){
-              console.log(  "ngOnInit in editItem component"
-              );
-  
+              console.log(  "ngOnInit in editItem component");
+              console.log(res);
+              console.log(this.item);
+         //     this.currentCategory = data['item'].category.name;
+              console.log(data['item'].category.name);
+              console.log(data['item'].category);
+
+              this.currentCategoryID = data['item'].category;
+              this.currentCategoryName = data['item'].category.name;
+
+              console.log(this.currentCategoryID);
+              console.log(this.currentCategoryName);
+
+              this.item.item_picture =  data['item'].image;
+              
+              this.itemID = res.id;
+           //   this.itemIDstr = this.itemID.toString;
+
+              console.log(this.itemID);
+           //   console.log(this.itemIDstr);
+
+              console.log("http://localhost:3030/api/items/" + this.itemID);
+
             }  
           })
           .catch(error => this.data.error(error['message']));
@@ -59,6 +86,9 @@ export class EditItemComponent implements OnInit {
           : this.data.error(data2['message']);
 
         console.log(this.categories);
+        console.log(this.item);
+
+
       } catch (error) {
         this.data.error(error['message']);
       }
@@ -105,7 +135,8 @@ export class EditItemComponent implements OnInit {
       }
     }
   
-  
+  //             "http://localhost:3030/api/items/" + this.item._id,
+
   
     async post() {
       this.btnDisabled = true;
@@ -113,15 +144,19 @@ export class EditItemComponent implements OnInit {
         if (this.validate(this.item)) {
   
           console.log("$$$$ categoryID is " + this.item.categoryId);
+          console.log(this.itemID);
+
+
+          console.log("#### " + "http://localhost:3030/api/item/" + this.itemID);
           const data = await this.rest.post(
-            'http://localhost:3030/api/admin/items',
+            "http://localhost:3030/api/item/" + this.itemID,
             { category: this.item.categoryId,
               title: this.item.title,
               description: this.item.description,
               image: this.item.item_picture }
           );
           data['success']
-            ? this.router.navigate(['/profile/'])
+            ? this.router.navigate(['/items/'])
               .then(() => this.data.success(data['message']))
               .catch(error => this.data.error(error))
             : this.data.error(data['message']);
