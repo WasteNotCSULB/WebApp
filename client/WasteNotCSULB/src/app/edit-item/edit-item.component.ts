@@ -63,7 +63,7 @@ export class EditItemComponent implements OnInit {
               console.log(this.currentCategoryName);
 
               this.item.item_picture =  data['item'].image;
-              
+
               this.itemID = res.id;
            //   this.itemIDstr = this.itemID.toString;
 
