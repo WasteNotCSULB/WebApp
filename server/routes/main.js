@@ -204,13 +204,13 @@ router.route('/categories')
 
   
 
-  router.delete('/item/:id', (req, res, next) => {
+  router.delete('/itemDelete/:id', (req, res, next) => {
 
-    //  console.log(JSON.stringify(req.body));
-    //  console.log(req.params.id);
+     console.log(JSON.stringify(req.body));
+     console.log(req.params.id);
      Item.remove({ _id: req.params.id }, function (err){
        if(err) {
-         return handleError(err);
+         return err;
       } else {
 
         res.json({
