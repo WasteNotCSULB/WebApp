@@ -201,4 +201,58 @@ router.route('/categories')
       });
   });
 
+  router.delete('/item/:id', (req, res, next) => {
+
+      console.log(JSON.stringify(req.body));
+      console.log(req.params.id);
+     Item.remove({ _id: req.params.id }, function (err){
+       if(err) {
+         return handleError(err);
+      } else {
+
+        res.json({
+          success: true,
+          message: 'Item deleted'
+        });
+      }
+        
+     });
+
+  });
+  
+  /*
+
+  router.route('/items')
+    .get(checkJWT, (req, res, next) => {
+      Item.find({})
+        .populate('category')
+        .exec((err, items) => {
+          if (items) {
+            res.json({
+              success: true,
+              message: "Items",
+              items: items
+            });
+          }
+        });
+    })
+    .post(checkJWT, (req, res, next) => {
+      let item = new Item();
+      item.category = req.body.category;
+     // console.log("204 reqbody " + req.body.category);
+     // console.log(JSON.stringify(req.body));
+
+    //  console.log("404 title reqbody " + req.body.title);
+
+      item.title = req.body.title;
+      item.description = req.body.description;
+      item.image = req.body.image;
+      item.save();
+      res.json({
+        success: true,
+        message: 'Successfully Added the item',
+      });
+    });
+*/
+
 module.exports = router;
