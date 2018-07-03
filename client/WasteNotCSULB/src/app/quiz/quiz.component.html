@@ -22,26 +22,28 @@
 
             <div *ngIf="!items[0].answered" class="container">
 
-                <div class="row" id="answerchoices">
+                <div id="answerchoices">
 
 
-                    <div class="col-xs-4 col-xm-8" align="center-block">
 
-                        <img class="img-fluid compost" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_compost.png" (click)="submitAnswer(0, 7)"
-                            *ngSwitchCase="0" height="100" width="100">
+                    <div class="d-flex justify-content-center row-hl">
 
-
-                        <img class="img-fluid" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_recycle.png" (click)="submitAnswer(0, 8)"
-                            *ngSwitchCase="0" height="100" width="100">
+                        <img class="p-4 item-hl" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_compost.png" (click)="submitAnswer(0, 7)"
+                            *ngSwitchCase="0" height="120" width="120">
 
 
-                        <img class="img-fluid" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_landfill.png" (click)="submitAnswer(0, 9)"
-                            *ngSwitchCase="0" height="100" width="100">
+                        <img class="p-4 item-hl" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_recycle.png" (click)="submitAnswer(0, 8)"
+                            *ngSwitchCase="0" height="120" width="120">
+
+
+                        <img class="p-4 item-hl" id="imageChoice" type="image" alt="image" src="./assets/img/wastenot_landfill.png" (click)="submitAnswer(0, 9)"
+                            *ngSwitchCase="0" height="120" width="120">
 
 
                     </div>
                 </div>
             </div>
+
             <!--
 
                     
