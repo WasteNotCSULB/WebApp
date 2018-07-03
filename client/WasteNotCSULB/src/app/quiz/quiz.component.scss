@@ -71,18 +71,7 @@
 //     font-size: 36px;
 // }
 
-#wth {
-  background-color: red;
-}
-
-#wth .card {
-  background-color: purple;
-  color: white;
-}
-
 #quizimage {
-  background-color: purple;
-  padding: 10px;
 }
 
 #answerchoices {
@@ -93,4 +82,8 @@
   // margin-left: 100px;
 
   border-color: black;
+}
+
+.item-hl {
+  border: 1px solid #333;
 }
