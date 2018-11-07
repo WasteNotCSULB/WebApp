@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -56,8 +56,8 @@ import { TypesComponent } from './types/types.component';
     SummaryComponent,
     AboutComponent,
     SearchComponent,
-    EditItemComponent, 
-    TypeComponent, 
+    EditItemComponent,
+    TypeComponent,
     TypesComponent
   ],
   imports: [
@@ -67,8 +67,8 @@ import { TypesComponent } from './types/types.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    //MatAutocompleteModule, 
-    //MatInputModule,
+    MatAutocompleteModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
   providers: [RestApiService, DataService, AuthGuardService],
