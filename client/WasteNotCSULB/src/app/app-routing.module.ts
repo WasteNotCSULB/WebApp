@@ -19,7 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
 import { TypeComponent } from './type/type.component';
 import { TypesComponent } from './types/types.component';
-
+import { SearchTwoComponent } from './search-two/search-two.component';
 import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
@@ -101,6 +101,10 @@ const routes: Routes = [
     component: SearchComponent
   },
   {
+    path: 'searchTwo',
+    component: SearchTwoComponent
+  },
+  {
     path: '**',
     redirectTo: ''
   }
@@ -110,4 +114,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
