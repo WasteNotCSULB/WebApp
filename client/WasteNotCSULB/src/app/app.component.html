@@ -105,7 +105,7 @@
                     <!--  <input type="submit" name="submit" class="submit" (click)="search()">  -->
                     <div class="input-group-append">
                         <button class="btn btn-success submit" type="submit" name="somename" [(ngModel)]="searchTerm"
-                            (click)="search()" ngDefaultControl>
+                            [ngModelOptions]="{standalone: true}" (click)="search()" ngDefaultControl>
                             <i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
