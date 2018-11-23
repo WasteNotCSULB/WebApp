@@ -73,30 +73,41 @@
 </nav>
 <!-- (ends) navbar -->
 
-<div class="container text-center pr-3 pl-3 pb-3" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);">
-    <!-- SEARCH BAR -->
-    <div class="row pt-4">
-        <div class="col-sm-12">
-            <div class="input-group justify-content-center">
-                <div class="input-group-prepend">
-                    <a href="https://www.algolia.com/"><img src="./assets/img/algolia_logo.png" height="37.5" width="37.5"
-                            alt="Algolia Logo"></a>
-                </div>
-                <input type="text" name="text" class="form-control" [(ngModel)]="searchTerm" (keyup.enter)="search()"
-                    placeholder="Search Items" ngDefaultControl>
-                <!--  <input type="submit" name="submit" class="submit" (click)="search()">  -->
-                <div class="input-group-append">
-                    <button class="btn btn-success submit" type="submit" name="somename" [(ngModel)]="searchTerm"
-                        (click)="search()" ngDefaultControl>
-                        <i class="fa fa-search" aria-hidden="true"></i></button>
+<form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+
+    <div class="container text-center pr-3 pl-3 pb-3" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);">
+        <!-- SEARCH BAR -->
+        <div class="row pt-4">
+            <div class="col-sm-12">
+                <div class="input-group justify-content-center">
+                    <div class="input-group-prepend">
+                        <a href="https://www.algolia.com/"><img src="./assets/img/algolia_logo.png" height="37.5" width="37.5"
+                                alt="Algolia Logo"></a>
+                    </div>
+                    <input type="text" name="text" class="form-control" formControlName='search' [(ngModel)]="searchTerm"
+                        (keyup.enter)="search()" placeholder="Search Items" ngDefaultControl>
+
+                    <div class='search-drop-down '>
+                        <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+
+                            {{s}}
+                        </div>
+                    </div>
+
+                    <!--  <input type="submit" name="submit" class="submit" (click)="search()">  -->
+                    <div class="input-group-append">
+                        <button class="btn btn-success submit" type="submit" name="somename" [(ngModel)]="searchTerm"
+                            (click)="search()" ngDefaultControl>
+                            <i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- (end) search bar -->
     </div>
-    <!-- (end) search bar -->
-</div>
+</form>
 
-
+<!--
 <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
     <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown() ' class=' input-underline search-bar '
         type='text'>
@@ -108,7 +119,7 @@
         {{s}}
     </div>
 </div>
-
+-->
 <!-- routes the html of all the ..\app\.. -->
 <router-outlet> </router-outlet>
 
