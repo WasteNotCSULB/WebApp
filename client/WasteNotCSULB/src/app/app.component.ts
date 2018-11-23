@@ -81,7 +81,7 @@ export class AppComponent {
 
   selectValue(value) {
     this.stateForm.patchValue({ "search": value });
-    //this.showDropDown = false;
+    this.showDropDown = false;
   }
 
   openDropDown() {
