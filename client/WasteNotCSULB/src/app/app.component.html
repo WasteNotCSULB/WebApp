@@ -84,8 +84,14 @@
                         <a href="https://www.algolia.com/"><img src="./assets/img/algolia_logo.png" height="37.5" width="37.5"
                                 alt="Algolia Logo"></a>
                     </div>
+                    <!--
                     <input type="text" name="text" class="form-control" formControlName='search' [(ngModel)]="searchTerm"
                         (keyup.enter)="search()" placeholder="Search Items" ngDefaultControl>
+                    -->
+
+                    <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown() '
+                        type='text' ngDefaultControl>>
+
 
                     <div class='search-drop-down '>
                         <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
