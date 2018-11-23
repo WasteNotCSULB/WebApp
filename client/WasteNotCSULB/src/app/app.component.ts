@@ -78,5 +78,9 @@ export class AppComponent {
     return this.stateForm.value.search;
   }
 
+  selectValue(value) {
+    this.stateForm.patchValue({ "search": value });
+    //this.showDropDown = false;
+  }
 
 }
