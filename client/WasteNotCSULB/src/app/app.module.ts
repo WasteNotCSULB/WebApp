@@ -34,6 +34,7 @@ import { TypeComponent } from './type/type.component';
 import { TypesComponent } from './types/types.component';
 import { MapComponent } from './map/map.component';
 
+import { SearchFilterPipe } from './filter-pipe';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MapComponent } from './map/map.component';
     EditItemComponent,
     TypeComponent,
     TypesComponent,
-    MapComponent
+    MapComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

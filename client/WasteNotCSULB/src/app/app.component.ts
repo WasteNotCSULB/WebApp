@@ -73,4 +73,10 @@ export class AppComponent {
   jumpToTopPage() {
     window.scrollTo(0, 0);
   }
+
+  getSearchValue() {
+    return this.stateForm.value.search;
+  }
+
+
 }

@@ -103,7 +103,7 @@
 </form>
 
 <div class='search-drop-down '>
-    <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states">
+    <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
 
         {{s}}
     </div>
