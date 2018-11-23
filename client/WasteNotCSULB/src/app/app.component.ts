@@ -5,6 +5,8 @@ import { DataService } from './data.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,18 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  stateForm: FormGroup;
+
+  states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
+    'Connecticut', 'Delaware', 'District of Columbia', 'Florida'
+    , 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky'
+    , 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina',
+    'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
+    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington',
+    'West Virginia', 'Wisconsin', 'Wyoming'];
+
   searchTerm = '';
   isCollapsed = true;
   //name = new FormControl('');
@@ -19,10 +33,17 @@ export class AppComponent {
   constructor(
     private router: Router,
     private data: DataService,
+    private fb: FormBuilder
   ) {
+    this.initForm();
     this.data.getProfile();
   }
 
+  initForm(): FormGroup {
+    return this.stateForm = this.fb.group({
+      search: [null]
+    })
+  }
   get token() {
     return localStorage.getItem('token');
   }
@@ -49,7 +70,7 @@ export class AppComponent {
     this.searchTerm = null; // https://stackoverflow.com/questions/41483914/clearing-an-input-text-field-in-angular2
   }
 
-  jumpToTopPage(){
-    window.scrollTo(0,0);
+  jumpToTopPage() {
+    window.scrollTo(0, 0);
   }
 }
