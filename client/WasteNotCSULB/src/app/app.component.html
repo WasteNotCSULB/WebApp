@@ -89,19 +89,20 @@
                         (keyup.enter)="search()" placeholder="Search Items" ngDefaultControl>
                     -->
 
-                    <input id='search' placeholder="Search for a state" formControlName='search' [(ngModel)]="searchTerm"
-                        class="form-control" type='text' ngDefaultControl>>
+                    <input id='search' placeholder="Search for a state" (click)=' openDropDown() ' formControlName='search'
+                        [(ngModel)]="searchTerm" class="form-control" type='text' ngDefaultControl>>
 
+                    <div clickOutside (clickOutside)="closeDropDown()">
 
-                    <div class='search-drop-down '>
-                        <div (click)='selectValue(s)' class='search-results' *ngFor="let s of states | searchFilter: getSearchValue()">
+                        <div *ngIf='showDropDown' class='search-drop-down '>
+                            <div (click)='selectValue(s)' class='search-results' *ngFor="let s of states | searchFilter: getSearchValue()">
 
-                            <div class="separate">
-                                {{s}}
+                                <div class="separate">
+                                    {{s}}
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <!--  <input type="submit" name="submit" class="submit" (click)="search()">  -->
                     <div class="input-group-append">
                         <button class="btn btn-success submit" type="submit" name="somename" [(ngModel)]="searchTerm"

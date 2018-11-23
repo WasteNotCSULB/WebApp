@@ -36,6 +36,8 @@ import { MapComponent } from './map/map.component';
 
 import { SearchFilterPipe } from './filter-pipe';
 
+import { ClickOutsideDirective } from './dropdown-directive';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { SearchFilterPipe } from './filter-pipe';
     TypeComponent,
     TypesComponent,
     MapComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
 
+  showDropDown = false;
   stateForm: FormGroup;
 
   states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
@@ -81,6 +82,13 @@ export class AppComponent {
   selectValue(value) {
     this.stateForm.patchValue({ "search": value });
     //this.showDropDown = false;
+  }
+
+  openDropDown() {
+    this.showDropDown = false;
+  }
+  closeDropDown() {
+    this.showDropDown = !this.showDropDown;
   }
 
 }
