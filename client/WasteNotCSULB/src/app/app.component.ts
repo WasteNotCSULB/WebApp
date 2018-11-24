@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from './data.service';
 
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { environment } from "../environments/environment";
+import { RestApiService } from './rest-api.service';
+
+
+const BACKEND_URL = environment.api;
+
 
 @Component({
   selector: 'app-root',
@@ -12,6 +18,11 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  itemData: any;
+  totalItems: any;
+  page = 1;
+
 
   countrylist: any[] = [
     { "name": "Afghanistan", "code": "AF" },
@@ -45,8 +56,13 @@ export class AppComponent {
   constructor(
     private router: Router,
     private data: DataService,
+    private activatedRoute: ActivatedRoute,
+    private rest: RestApiService
   ) {
     this.data.getProfile();
+    this.activatedRoute.params.subscribe(res => {
+      this.getItems();
+    });
   }
 
   get token() {
@@ -94,6 +110,25 @@ export class AppComponent {
 
   onChange(deviceValue) {
     console.log(deviceValue);
+  }
+
+  async getItems(event?: any) {
+    if (event) {
+      this.itemData = null;
+    }
+    try {
+      const data = await this.rest.get(
+        BACKEND_URL + `/items/?page=${this
+          .page - 1}` ,
+        //"http://wastenotcsulb-env.aewuadnmmg.us-east-1.elasticbeanstalk.com/api/items"
+      );
+      data['success']
+        ? (this.itemData = data)
+        : this.data.error(data['message']);
+      console.log(this.itemData);
+    } catch (error) {
+      this.data.error(error['message']);
+    }
   }
 
 }
