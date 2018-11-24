@@ -20,6 +20,7 @@ const BACKEND_URL = environment.api;
 export class AppComponent {
 
   itemData: any;
+  itemArray: any[];
   totalItems: any;
   page = 1;
 
@@ -122,10 +123,21 @@ export class AppComponent {
           .page - 1}` ,
         //"http://wastenotcsulb-env.aewuadnmmg.us-east-1.elasticbeanstalk.com/api/items"
       );
-      data['success']
-        ? (this.itemData = data)
-        : this.data.error(data['message']);
+      if (data['success']) {
+        this.itemData = data;
+        /*
+        for (var i = 0; i < this.itemData.length; i++) {
+          this.itemArray.push(this.itemData.title);
+        }
+        */
+
+        this.itemArray = this.itemData.items;
+      } else {
+        this.data.error(data['message']);
+      }
       console.log(this.itemData);
+      console.log(this.itemArray);
+
     } catch (error) {
       this.data.error(error['message']);
     }

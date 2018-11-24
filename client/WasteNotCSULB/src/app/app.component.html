@@ -93,10 +93,10 @@
 
 
 <div class="typeHead">
-    <input type="text" list="countries" name="country" [(ngModel)]='selected' (change)="selectCountryName(selected)" />
-    <datalist id="countries">
+    <input type="text" list="items" name="items" [(ngModel)]='selected' (change)="selectCountryName(selected)" />
+    <datalist id="items">
         <select>
-            <option *ngFor="let c of countrylist" [value]="c.name"></option>
+            <option *ngFor="let c of itemArray" [value]="c.title"></option>
         </select>
     </datalist>
 </div>
