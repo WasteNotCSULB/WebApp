@@ -24,29 +24,6 @@ export class AppComponent {
   totalItems: any;
   page = 1;
 
-
-  countrylist: any[] = [
-    { "name": "Afghanistan", "code": "AF" },
-    { "name": "Åland Islands", "code": "AX" },
-    { "name": "Albania", "code": "AL" },
-    { "name": "Algeria", "code": "DZ" },
-    { "name": "American Samoa", "code": "AS" },
-    { "name": "AndorrA", "code": "AD" },
-    { "name": "Angola", "code": "AO" },
-    { "name": "Anguilla", "code": "AI" },
-    { "name": "Antarctica", "code": "AQ" },
-    { "name": "Antigua and Barbuda", "code": "AG" },
-    { "name": "Argentina", "code": "AR" },
-    { "name": "Armenia", "code": "AM" },
-    { "name": "Aruba", "code": "AW" },
-    { "name": "Australia", "code": "AU" },
-    { "name": "Austria", "code": "AT" },
-    { "name": "Azerbaijan", "code": "AZ" },
-    { "name": "Bahamas", "code": "BS" },
-    { "name": "Bahrain", "code": "BH" },
-    { "name": "Bangladesh", "code": "BD" },
-    { "name": "Pizza", "code": "PZ" }
-  ];
   selected: string = "";
 
 
@@ -96,9 +73,9 @@ export class AppComponent {
     window.scrollTo(0, 0);
   }
 
-  selectCountryName(name) {
-    console.log(name);
-    console.log("this selected: " + this.selected);
+  selectItemName(name) {
+    // console.log(name);
+    // console.log("this selected: " + this.selected);
 
 
     if (name) {
@@ -125,18 +102,12 @@ export class AppComponent {
       );
       if (data['success']) {
         this.itemData = data;
-        /*
-        for (var i = 0; i < this.itemData.length; i++) {
-          this.itemArray.push(this.itemData.title);
-        }
-        */
-
         this.itemArray = this.itemData.items;
       } else {
         this.data.error(data['message']);
       }
-      console.log(this.itemData);
-      console.log(this.itemArray);
+      //      console.log(this.itemData);
+      //      console.log(this.itemArray);
 
     } catch (error) {
       this.data.error(error['message']);
