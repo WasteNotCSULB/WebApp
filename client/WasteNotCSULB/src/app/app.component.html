@@ -77,15 +77,6 @@
 
 
 
-<div class="typeHead">
-    <input type="text" list="items" name="items" [(ngModel)]='selected' (change)="selectItemName(selected)" />
-    <datalist id="items">
-        <select>
-            <option *ngFor="let i of itemArray" [value]="i.title"></option>
-        </select>
-    </datalist>
-</div>
-
 
 
 
