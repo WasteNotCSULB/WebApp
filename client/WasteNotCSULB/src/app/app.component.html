@@ -88,10 +88,10 @@
 
 
 <div class="typeHead">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Item name" (keyup)="filterItemList()">
+    <input type="text" [(ngModel)]="selected" placeholder="Item title" (keyup)="filterItemList()">
     <ul *ngIf="filteredResult.length>0">
-        <li *ngFor="let i of filteredResult" (click)="selectItemName(i.name)">
-            <span>{{i.name}}</span>
+        <li *ngFor="let i of filteredResult" (click)="selectItemName(i.title)">
+            <span>{{i.title}}</span>
         </li>
     </ul>
 </div>

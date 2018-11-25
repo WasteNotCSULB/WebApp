@@ -49,10 +49,13 @@ export class AppComponent {
 
   //filter itemlist based on user input
   filterItemList() {
-    if (this.searchTerm && this.searchTerm !== '') {
-      let _term = this.searchTerm.toLowerCase();
+    console.log("line 52");
+    if (this.selected && this.selected !== '') {
+      let _term = this.selected.toLowerCase();
+      console.log("line 55 " + _term);
+
       this.filteredResult = this.itemArray.filter(function (el: any) {
-        return el.name.toLowerCase().indexOf(_term.toLowerCase()) > -1;
+        return el.title.toLowerCase().indexOf(_term.toLowerCase()) > -1;
       });
     } else {
       this.filteredResult = [];
