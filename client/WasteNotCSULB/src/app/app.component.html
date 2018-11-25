@@ -87,7 +87,14 @@
 </div>
 
 
-
+<div class="typeHead">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Item name" (keyup)="filterItemList()">
+    <ul *ngIf="filteredResult.length>0">
+        <li *ngFor="let i of filteredResult" (click)="selectItemName(i.name)">
+            <span>{{i.name}}</span>
+        </li>
+    </ul>
+</div>
 
 <div class="container text-center pr-3 pl-3 pb-3" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);">
     <!-- SEARCH BAR -->

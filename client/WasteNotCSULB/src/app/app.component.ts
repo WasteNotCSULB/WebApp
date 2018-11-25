@@ -31,6 +31,9 @@ export class AppComponent {
   isCollapsed = true;
   //name = new FormControl('');
 
+
+  filteredResult: any[] = [];
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -41,6 +44,19 @@ export class AppComponent {
     this.activatedRoute.params.subscribe(res => {
       this.getItems();
     });
+  }
+
+
+  //filter itemlist based on user input
+  filterItemList() {
+    if (this.searchTerm && this.searchTerm !== '') {
+      let _term = this.searchTerm.toLowerCase();
+      this.filteredResult = this.itemArray.filter(function (el: any) {
+        return el.name.toLowerCase().indexOf(_term.toLowerCase()) > -1;
+      });
+    } else {
+      this.filteredResult = [];
+    }
   }
 
   get token() {
@@ -67,6 +83,9 @@ export class AppComponent {
       this.router.navigate(['search', { query: this.searchTerm }]);
     }
     this.searchTerm = null; // https://stackoverflow.com/questions/41483914/clearing-an-input-text-field-in-angular2
+
+    this.filteredResult = [];
+
   }
 
   jumpToTopPage() {
@@ -83,6 +102,7 @@ export class AppComponent {
       this.router.navigate(['search', { query: name }]);
     }
     this.selected = null; // 
+    this.filteredResult = [];
 
   }
 
