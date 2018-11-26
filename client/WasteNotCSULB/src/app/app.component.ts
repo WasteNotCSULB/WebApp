@@ -94,6 +94,10 @@ export class AppComponent {
     }
 
     console.log("8*** " + this.itemIndex);
+    console.log("11*** " + this.itemArray[this.itemIndex].title);
+    console.log("12*** " + this.itemArray[this.itemIndex]._id);
+
+
     if (name) {
       this.collapse();
       //    this.router.navigate(['search', { query: name }]);
