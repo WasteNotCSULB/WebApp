@@ -26,7 +26,7 @@ export class AppComponent {
   page = 1;
 
   selected: string = "";
-
+  directSelect: any = false;
 
   searchTerm = '';
   isCollapsed = true;
@@ -90,6 +90,8 @@ export class AppComponent {
         console.log("10a index: " + this.itemIndex);
         console.log("10b i:  " + i);
 
+        this.directSelect = true;
+
       }
     }
 
@@ -100,12 +102,14 @@ export class AppComponent {
 
     if (name) {
       this.collapse();
-      //    this.router.navigate(['search', { query: name }]);
-      this.router.navigate(['/item/' + this.itemArray[this.itemIndex]._id]);
-
+      if (this.directSelect) {
+        this.router.navigate(['/item/' + this.itemArray[this.itemIndex]._id]);
+      } else {
+        this.router.navigate(['search', { query: name }]);
+      }
     }
     this.selected = null; // 
-
+    this.directSelect = false;
   }
 
   onChange(deviceValue) {
