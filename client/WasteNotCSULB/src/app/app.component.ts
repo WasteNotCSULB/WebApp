@@ -83,21 +83,15 @@ export class AppComponent {
     // console.log("this selected: " + this.selected);
     this.itemIndex = 0;
     for (var i = 0; i < this.itemArray.length; i++) {
-      console.log("7***" + this.itemArray[i].title);
       if (this.itemArray[i].title === name) {
-        console.log("9*** equal");
         this.itemIndex = i;
-        console.log("10a index: " + this.itemIndex);
-        console.log("10b i:  " + i);
+
 
         this.directSelect = true;
 
       }
     }
 
-    console.log("8*** " + this.itemIndex);
-    console.log("11*** " + this.itemArray[this.itemIndex].title);
-    console.log("12*** " + this.itemArray[this.itemIndex]._id);
 
 
     if (name) {
