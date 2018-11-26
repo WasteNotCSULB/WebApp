@@ -101,7 +101,7 @@ export class AppComponent {
     if (name) {
       this.collapse();
       //    this.router.navigate(['search', { query: name }]);
-      this.router.navigate(['/item/' + '5ae961d71471920ba18a5b4c']);
+      this.router.navigate(['/item/' + this.itemArray[this.itemIndex]._id]);
 
     }
     this.selected = null; // 
