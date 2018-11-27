@@ -9,6 +9,130 @@ import { environment } from "../../environments/environment";
 
 const BACKEND_URL = environment.api;
 
+@Component({
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+})
+export class SearchComponent implements OnInit {
+  query: string;
+
+  page = 1;
+
+  content: any;
+
+  itemData: any;
+  itemArray: any[];
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private data: DataService,
+    private rest: RestApiService,
+  ) { }
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(res => {
+      this.query = res['query'];
+      this.page = 1;
+      // this.getItems();
+      this.getItemsFuse();
+    });
+  }
+
+  get lower() {
+    return 1 + this.content.hitsPerPage * this.content.page;
+  }
+
+  get upper() {
+    return Math.min(
+      this.content.hitsPerPage * (this.content.page + 1),
+      this.content.nbHits,
+    );
+  }
+
+  async getItems() {
+    this.content = null;
+    try {
+      const data = await this.rest.get(
+        BACKEND_URL + `/search?query=${this.query}&page=${this.page -
+        1}`,
+      );
+      data['success']
+        ? (this.content = data['content'])
+        : this.data.error(data['message']);
+    } catch (error) {
+      this.data.error(error['message']);
+    }
+  }
+
+  async getItemsFuse(event?: any) {
+    if (event) {
+      this.itemData = null;
+    }
+    try {
+      const data = await this.rest.get(
+        BACKEND_URL + `/itemsAll/?page=${this
+          .page - 1}` ,
+        //"http://wastenotcsulb-env.aewuadnmmg.us-east-1.elasticbeanstalk.com/api/items"
+      );
+      if (data['success']) {
+        this.itemData = data;
+        this.itemArray = this.itemData.items;
+      } else {
+        this.data.error(data['message']);
+      }
+      //console.log(this.itemData);
+      //console.log(this.itemArray);
+
+      this.fuseSearch();
+
+    } catch (error) {
+      this.data.error(error['message']);
+    }
+  }
+
+  fuseSearch() {
+
+    //console.log("333 fuse search called")
+    var options = {
+      shouldSort: true,
+      threshold: 0.4,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "title"
+      ]
+    };
+
+
+    // let list: any[] = [{ "title": "pizza" }, { "title": "boxing" }];
+    //let list: any[] = this.itemData.items;
+    // console.log("alpha kenny you 123: " + this.itemData.items);
+    //console.log("alpha kenny you 123: " + JSON.stringify(this.itemArray));
+    let list: any[] = this.itemArray;
+
+    let queryS: string = "my query";
+
+    let fuseOpts: IFuseOptions = {
+      //options
+      threshold: 0.4,
+
+      keys: ["title"]
+    };
+    //console.log("2222434 fuseResults");
+
+    let fuseSearch = new Fuse(list, fuseOpts);
+    let fuseResults: any[] = fuseSearch.search(this.query);
+    //console.log("343434 fuseResults");
+    //console.log(fuseResults);
+
+    this.content = fuseResults;
+  }
+}
+
+
 
 /**
  * typescript class
@@ -851,125 +975,3 @@ export interface ISearchOptions {
 
 
 
-@Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-})
-export class SearchComponent implements OnInit {
-  query: string;
-
-  page = 1;
-
-  content: any;
-
-  itemData: any;
-  itemArray: any[];
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private data: DataService,
-    private rest: RestApiService,
-  ) { }
-
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(res => {
-      this.query = res['query'];
-      this.page = 1;
-      // this.getItems();
-      this.getItemsFuse();
-    });
-  }
-
-  get lower() {
-    return 1 + this.content.hitsPerPage * this.content.page;
-  }
-
-  get upper() {
-    return Math.min(
-      this.content.hitsPerPage * (this.content.page + 1),
-      this.content.nbHits,
-    );
-  }
-
-  async getItems() {
-    this.content = null;
-    try {
-      const data = await this.rest.get(
-        BACKEND_URL + `/search?query=${this.query}&page=${this.page -
-        1}`,
-      );
-      data['success']
-        ? (this.content = data['content'])
-        : this.data.error(data['message']);
-    } catch (error) {
-      this.data.error(error['message']);
-    }
-  }
-
-  async getItemsFuse(event?: any) {
-    if (event) {
-      this.itemData = null;
-    }
-    try {
-      const data = await this.rest.get(
-        BACKEND_URL + `/itemsAll/?page=${this
-          .page - 1}` ,
-        //"http://wastenotcsulb-env.aewuadnmmg.us-east-1.elasticbeanstalk.com/api/items"
-      );
-      if (data['success']) {
-        this.itemData = data;
-        this.itemArray = this.itemData.items;
-      } else {
-        this.data.error(data['message']);
-      }
-      console.log(this.itemData);
-      console.log(this.itemArray);
-
-      this.fuseSearch();
-
-    } catch (error) {
-      this.data.error(error['message']);
-    }
-  }
-
-  fuseSearch() {
-
-    console.log("333 fuse search called")
-    var options = {
-      shouldSort: true,
-      threshold: 0.4,
-      location: 0,
-      distance: 100,
-      maxPatternLength: 32,
-      minMatchCharLength: 1,
-      keys: [
-        "title"
-      ]
-    };
-
-
-    // let list: any[] = [{ "title": "pizza" }, { "title": "boxing" }];
-    //let list: any[] = this.itemData.items;
-    // console.log("alpha kenny you 123: " + this.itemData.items);
-    //console.log("alpha kenny you 123: " + JSON.stringify(this.itemArray));
-    let list: any[] = this.itemArray;
-
-    let queryS: string = "my query";
-
-    let fuseOpts: IFuseOptions = {
-      //options
-      threshold: 0.4,
-
-      keys: ["title"]
-    };
-    console.log("2222434 fuseResults");
-
-    let fuseSearch = new Fuse(list, fuseOpts);
-    let fuseResults: any[] = fuseSearch.search(this.query);
-    console.log("343434 fuseResults");
-    console.log(fuseResults);
-
-    this.content = fuseResults;
-  }
-}
