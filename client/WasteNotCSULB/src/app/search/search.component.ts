@@ -959,6 +959,8 @@ export class SearchComponent implements OnInit {
 
     let fuseOpts: IFuseOptions = {
       //options
+      threshold: 0.4,
+
       keys: ["title"]
     };
     console.log("2222434 fuseResults");
