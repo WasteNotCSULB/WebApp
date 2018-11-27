@@ -967,5 +967,7 @@ export class SearchComponent implements OnInit {
     let fuseResults: any[] = fuseSearch.search(this.query);
     console.log("343434 fuseResults");
     console.log(fuseResults);
+
+    this.content = fuseResults;
   }
 }
