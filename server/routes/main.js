@@ -364,6 +364,48 @@ router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
     if (req.body.image) item.image = req.body.image;
     if (req.body.type) item.type = req.body.type;
     if (req.body.bin) item.bin = req.body.bin;
+    if (req.body.isCompostAndLandfill) {
+      item.isCompostAndLandfill = req.body.isCompostAndLandfill;
+    } else {
+      if (item.isCompostAndLandfill !== true) {
+        item.isCompostAndLandfill = false;
+      }
+    }
+
+    if (req.body.tipCompostWrong) {
+      item.tipCompostWrong = req.body.tipCompostWrong;
+    } else {
+      if (item.tipCompostWrong === undefined) {
+        item.tipCompostWrong = "";
+      }
+    }
+
+
+    if (req.body.tipRecycleWrong) {
+      item.tipRecycleWrong = req.body.tipRecycleWrong;
+    } else {
+      if (item.tipRecycleWrong === undefined) {
+        item.tipRecycleWrong = "";
+      }
+    }
+
+
+    if (req.body.tipLandfillWrong) {
+      item.tipLandfillWrong = req.body.tipLandfillWrong;
+    } else {
+      if (item.tipLandfillWrong === undefined) {
+        item.tipLandfillWrong = "";
+      }
+    }
+
+    if (req.body.correctAnswerFeedback) {
+      item.correctAnswerFeedback = req.body.correctAnswerFeedback;
+    } else {
+      if (item.correctAnswerFeedback === undefined) {
+        item.correctAnswerFeedback = "";
+      }
+    }
+
 
     item.save();
     res.json({
