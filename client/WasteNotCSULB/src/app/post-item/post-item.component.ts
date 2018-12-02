@@ -18,7 +18,14 @@ export class PostItemComponent implements OnInit {
     binId: '',
     typeId: '',
     description: '',
-    image: ''
+    image: '',
+
+    correctAnswerFeedback: '',
+    tipCompostWrong: '',
+    tipReycleWrong: '',
+    tipLandfillWrong: '',
+    isCompostAndLandfill: false,
+
   };
 
   bins: any;
