@@ -9,6 +9,11 @@ const ItemSchema = new Schema({
   title: String,
   image: String,
   description: String,
+  tipCompostWrong: String,
+  tipRecycleWrong: String,
+  tipLandfillWrong: String,
+  correctAnswerFeedback: String,
+  isCompostAndLandfill: Boolean,
   created: { type: Date, default: Date.now }
 });
 
