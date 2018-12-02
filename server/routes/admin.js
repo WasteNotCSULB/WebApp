@@ -54,14 +54,26 @@ router
     let item = new Item();
     item.type = req.body.type;
     item.bin = req.body.bin
-    // console.log("204 reqbody " + req.body.category);
+    //   console.log("204 reqbody " + req.body.bin);
     // console.log(JSON.stringify(req.body));
 
-    //  console.log("404 title reqbody " + req.body.title);
+    // console.log("404 title reqbody " + req.body.title);
 
     item.title = req.body.title;
     item.description = req.body.description;
     item.image = req.body.image;
+    item.correctAnswerFeedback = req.body.correctAnswerFeedback;
+    item.tipCompostWrong = req.body.tipCompostWrong;
+    item.tipRecycleWrong = req.body.tipRecycleWrong;
+    item.tipLandfillWrong = req.body.tipLandfillWrong;
+    if (req.body.isCompostAndLandfill == "") {
+      item.isCompostAndLandfill = false;
+    } else {
+      item.isCompostAndLandfill = req.body.isCompostAndLandfill;
+    }
+
+    console.log("205 reqbody.isCandL " + (req.body.isCompostAndLandfill == ""));
+    console.log(JSON.stringify(req.body));
     item.save();
     res.json({
       success: true,

@@ -13,7 +13,7 @@ const ItemSchema = new Schema({
   tipRecycleWrong: { type: String, default: undefined },
   tipLandfillWrong: { type: String, default: undefined },
   correctAnswerFeedback: { type: String, default: undefined },
-  isCompostAndLandfill: Boolean,
+  isCompostAndLandfill: { type: Boolean, default: false },
   created: { type: Date, default: Date.now }
 });
 
