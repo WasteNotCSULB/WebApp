@@ -68,6 +68,9 @@ export class QuizComponent implements OnInit {
     this.btnDisabled = true;
     this.questionResultRight = null;
     this.questionResultWrong = null;
+    this.answerCompost = false;
+    this.answerRecycle = false;
+    this.answerLandfill = false;
     this.idx += 1;
   }
 
@@ -94,7 +97,7 @@ export class QuizComponent implements OnInit {
       this.questionResultRight = 'Correct';
       this.totalRight += 1;
     } else if (choiceNum === 9 && this.items[itemIndex].isCompostAndLandfill) {
-      console.log("$$$choiceNum9 Compost and Landfill is correct for this item")
+      //  console.log("$$$choiceNum9 Compost and Landfill is correct for this item")
       this.questionResultRight = 'Correct';
       this.totalRight += 1;
     } else {
@@ -104,9 +107,6 @@ export class QuizComponent implements OnInit {
     this.items[itemIndex].answered = true;
     if (this.items[itemIndex].answered) {
       this.btnDisabled = false;
-      this.answerCompost = false;
-      this.answerRecycle = false;
-      this.answerLandfill = false;
     }
 
     if (this.totalRight > 0) {
