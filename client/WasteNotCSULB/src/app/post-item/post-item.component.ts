@@ -111,12 +111,10 @@ export class PostItemComponent implements OnInit {
             image: this.item.image,
 
             correctAnswerFeedback: this.item.correctAnswerFeedback,
-            /*
             tipCompostWrong: this.item.tipCompostWrong,
             tipReycleWrong: this.item.tipReycleWrong,
             tipLandfillWrong: this.item.tipLandfillWrong,
             isCompostAndLandfill: this.item.isCompostAndLandfill
-            */
 
           }
         );
