@@ -54,9 +54,11 @@ export class PostItemComponent implements OnInit {
       const data = await this.rest.get(
         BACKEND_URL + '/types'
       );
-      data['success']
-        ? (this.types = data['types'])
-        : this.data.error(data['message']);
+      if (data['success']) {
+        this.types = data['types'];
+      } else {
+        this.data.error(data['message']);
+      }
     } catch (error) {
       this.data.error(error['message']);
     }
@@ -106,14 +108,31 @@ export class PostItemComponent implements OnInit {
             type: this.item.typeId,
             title: this.item.title,
             description: this.item.description,
-            image: this.item.image
+            image: this.item.image,
+
+            correctAnswerFeedback: this.item.correctAnswerFeedback,
+            /*
+            tipCompostWrong: this.item.tipCompostWrong,
+            tipReycleWrong: this.item.tipReycleWrong,
+            tipLandfillWrong: this.item.tipLandfillWrong,
+            isCompostAndLandfill: this.item.isCompostAndLandfill
+            */
+
           }
         );
-        data['success']
-          ? this.router.navigate(['/profile/'])
+        if (data['success']) {
+
+          console.log("post-item ts: " + data);
+          console.log(data);
+
+
+          this.router.navigate(['/profile/'])
             .then(() => this.data.success(data['message']))
             .catch(error => this.data.error(error))
-          : this.data.error(data['message']);
+        }
+        else {
+          this.data.error(data['message']);
+        }
       }
     } catch (error) {
       this.data.error(error['message']);
