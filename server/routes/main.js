@@ -372,9 +372,7 @@ router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
     if (req.body.isCompostAndLandfill) {
       item.isCompostAndLandfill = req.body.isCompostAndLandfill;
     } else {
-      if (item.isCompostAndLandfill !== true) {
-        item.isCompostAndLandfill = false;
-      }
+      item.isCompostAndLandfill = false;
     }
 
     if (req.body.tipCompostWrong) {
