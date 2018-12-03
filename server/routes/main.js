@@ -380,43 +380,31 @@ router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
     if (req.body.tipCompostWrong) {
       item.tipCompostWrong = req.body.tipCompostWrong;
     } else {
-      if (item.tipCompostWrong === undefined) {
-        item.tipCompostWrong = "";
-      }
+      item.tipCompostWrong = "";
+
     }
 
 
     if (req.body.tipRecycleWrong) {
       item.tipRecycleWrong = req.body.tipRecycleWrong;
 
-      console.log("5555tip recycle wrong if");
     } else {
-
-      console.log("5555tip recycle wrong else");
-
-      //  if (item.tipRecycleWrong === undefined) {
-
-      console.log("54555tip recycle wrong else undef");
-
       item.tipRecycleWrong = "";
-      //   }
     }
 
 
     if (req.body.tipLandfillWrong) {
       item.tipLandfillWrong = req.body.tipLandfillWrong;
     } else {
-      if (item.tipLandfillWrong === undefined) {
-        item.tipLandfillWrong = "";
-      }
+      item.tipLandfillWrong = "";
+
     }
 
     if (req.body.correctAnswerFeedback) {
       item.correctAnswerFeedback = req.body.correctAnswerFeedback;
     } else {
-      if (item.correctAnswerFeedback === undefined) {
-        item.correctAnswerFeedback = "";
-      }
+      item.correctAnswerFeedback = "";
+
     }
 
 

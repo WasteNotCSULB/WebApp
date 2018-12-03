@@ -137,10 +137,6 @@ export class EditItemComponent implements OnInit {
     }
 
 */
-  clearSearch() {
-    this.item.tipRecycleWrong = null;
-  }
-
 
   validate(item) {
     console.log('33post-item ' + item);
