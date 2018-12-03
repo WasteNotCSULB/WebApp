@@ -359,6 +359,11 @@ router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
   Item.findOne({ _id: req.params.id }, (err, item) => {
     if (err) return next(err);
 
+
+    console.log("&&&& req body tipRecycleWrong");
+    console.log(req.body.tipRecycleWrong);
+
+
     if (req.body.title) item.title = req.body.title;
     if (req.body.description) item.description = req.body.description;
     if (req.body.image) item.image = req.body.image;
@@ -383,10 +388,18 @@ router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
 
     if (req.body.tipRecycleWrong) {
       item.tipRecycleWrong = req.body.tipRecycleWrong;
+
+      console.log("5555tip recycle wrong if");
     } else {
-      if (item.tipRecycleWrong === undefined) {
-        item.tipRecycleWrong = "";
-      }
+
+      console.log("5555tip recycle wrong else");
+
+      //  if (item.tipRecycleWrong === undefined) {
+
+      console.log("54555tip recycle wrong else undef");
+
+      item.tipRecycleWrong = "";
+      //   }
     }
 
 

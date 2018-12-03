@@ -137,6 +137,10 @@ export class EditItemComponent implements OnInit {
     }
 
 */
+  clearSearch() {
+    this.item.tipRecycleWrong = null;
+  }
+
 
   validate(item) {
     console.log('33post-item ' + item);
@@ -178,12 +182,7 @@ export class EditItemComponent implements OnInit {
     this.btnDisabled = true;
     try {
 
-      if (this.item.tipRecycleWrong.length == 0) {
-        console.log("### empty tip recycle wrong");
-        this.item.tipRecycleWrong = undefined;
-        console.log(this.item.tipRecycleWrong);
 
-      }
       if (this.validate(this.item)) {
         console.log('$$$$ item  is ' + this.item);
         console.log(this.item);
