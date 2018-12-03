@@ -300,6 +300,12 @@
                 <div class="rounded answer-score text-center" *ngIf="questionResultWrong ">
                     <h4 class="text-danger ">{{questionResultWrong}}</h4>
                 </div>
+
+
+                <div class="rounded" id="answer-box" *ngIf="questionResultRight">
+                    <div *ngIf="items[0].answered && idx==0"> {{items[0].correctAnswerFeedback}} </div>
+                </div>
+
                 <div class="rounded" id="answer-box" *ngIf="questionResultWrong">
                     <h4 *ngIf="items[0].answered && idx==0"> Correct choice: {{items[0].bin.name}} </h4>
                     <h4 *ngIf="items[1].answered && idx==1"> Correct choice: {{items[1].bin.name}} </h4>
@@ -312,7 +318,9 @@
                     <h4 *ngIf="items[8].answered && idx==8"> Correct choice: {{items[8].bin.name}} </h4>
                     <h4 *ngIf="items[9].answered && idx==9"> Correct choice: {{items[9].bin.name}} </h4>
 
-                    <div *ngIf="items[0].answered && idx==0"> {{items[0].tipRecycleWrong }}</div>
+                    <div *ngIf="items[0].answered && idx==0 && answerCompost"> {{items[0].tipCompostWrong }}</div>
+                    <div *ngIf="items[0].answered && idx==0 && answerRecycle"> {{items[0].tipRecycleWrong }}</div>
+                    <div *ngIf="items[0].answered && idx==0 && answerLandfill"> {{items[0].tipLandfillWrong }}</div>
 
 
                 </div>
