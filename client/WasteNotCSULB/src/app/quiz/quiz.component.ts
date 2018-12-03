@@ -93,15 +93,22 @@ export class QuizComponent implements OnInit {
 
     }
 
-    if (tempChoice.includes(this.items[itemIndex].bin.name)) {
+
+    if (choiceNum === 7 && this.items[itemIndex].isCompostAndLandfill) {
+      this.questionResultRight = 'Correct';
+      this.totalRight += 1;
+      this.items[itemIndex].bin.name = this.items[itemIndex].bin.name + ' or Landfill';
+
+    }
+    else if (tempChoice.includes(this.items[itemIndex].bin.name)) {
       this.questionResultRight = 'Correct';
       this.totalRight += 1;
     } else if (choiceNum === 9 && this.items[itemIndex].isCompostAndLandfill) {
-      //  console.log("$$$choiceNum9 Compost and Landfill is correct for this item")
       this.questionResultRight = 'Correct';
       this.totalRight += 1;
-    }
+      this.items[itemIndex].bin.name = this.items[itemIndex].bin.name + ' or Landfill';
 
+    }
     else if (choiceNum === 8 && this.items[itemIndex].isCompostAndLandfill) {
       this.questionResultWrong = 'Incorrect';
       this.items[itemIndex].bin.name = this.items[itemIndex].bin.name + ' or Landfill';
