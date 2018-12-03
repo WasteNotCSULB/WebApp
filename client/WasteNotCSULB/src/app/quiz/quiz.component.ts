@@ -100,7 +100,14 @@ export class QuizComponent implements OnInit {
       //  console.log("$$$choiceNum9 Compost and Landfill is correct for this item")
       this.questionResultRight = 'Correct';
       this.totalRight += 1;
-    } else {
+    }
+
+    else if (choiceNum === 8 && this.items[itemIndex].isCompostAndLandfill) {
+      //  console.log("$$$choiceNum9 Compost and Landfill is correct for this item")
+      this.questionResultWrong = 'Incorrect';
+      this.items[itemIndex].bin.name = this.items[itemIndex].bin.name + ' or Landfill';
+    }
+    else {
       this.questionResultWrong = 'Incorrect';
     }
 
