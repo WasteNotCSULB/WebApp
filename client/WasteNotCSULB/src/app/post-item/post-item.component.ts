@@ -22,7 +22,7 @@ export class PostItemComponent implements OnInit {
 
     correctAnswerFeedback: '',
     tipCompostWrong: '',
-    tipReycleWrong: '',
+    tipRecycleWrong: '',
     tipLandfillWrong: '',
     isCompostAndLandfill: false,
 
@@ -112,7 +112,7 @@ export class PostItemComponent implements OnInit {
 
             correctAnswerFeedback: this.item.correctAnswerFeedback,
             tipCompostWrong: this.item.tipCompostWrong,
-            tipReycleWrong: this.item.tipReycleWrong,
+            tipRecycleWrong: this.item.tipRecycleWrong,
             tipLandfillWrong: this.item.tipLandfillWrong,
             isCompostAndLandfill: this.item.isCompostAndLandfill
 
