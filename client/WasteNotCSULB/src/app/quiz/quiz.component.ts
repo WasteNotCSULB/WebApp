@@ -41,7 +41,7 @@ export class QuizComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const data = await this.rest.get(BACKEND_URL + '/items');
+      const data = await this.rest.get(BACKEND_URL + '/itemsRandom');
       data['success']
         ? (this.items = data['items'])
         : this.data.error(data['message']);
@@ -52,7 +52,7 @@ export class QuizComponent implements OnInit {
 
           //console.log(JSON.stringify(element));
         });
-        // 12.3.18 7:39 am commented out for now  this.shuffle(this.items);
+        this.shuffle(this.items);
       } else {
         console.log('TTTT error');
       }
