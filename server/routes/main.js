@@ -336,9 +336,6 @@ router.delete('/itemDelete/:id', checkJWT, verifyAdmin, (req, res, next) => {
 });
 
 
-/*
-Edit an Item
-*/
 
 router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
   Item.findOne({ _id: req.params.id }, (err, item) => {

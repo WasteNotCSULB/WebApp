@@ -30,7 +30,6 @@ export class AppComponent {
 
   searchTerm = '';
   isCollapsed = true;
-  //name = new FormControl('');
 
   constructor(
     private router: Router,
@@ -76,8 +75,7 @@ export class AppComponent {
   }
 
   selectItemName(name) {
-    // console.log(name);
-    // console.log("this selected: " + this.selected);
+
     this.itemIndex = 0;
     for (var i = 0; i < this.itemArray.length; i++) {
       if (this.itemArray[i].title === name) {
@@ -104,7 +102,6 @@ export class AppComponent {
   }
 
   onChange(deviceValue) {
-    console.log(deviceValue);
   }
 
   async getItems(event?: any) {
@@ -115,7 +112,6 @@ export class AppComponent {
       const data = await this.rest.get(
         BACKEND_URL + `/itemsAll/?page=${this
           .page - 1}` ,
-        //"http://wastenotcsulb-env.aewuadnmmg.us-east-1.elasticbeanstalk.com/api/items"
       );
       if (data['success']) {
         this.itemData = data;
@@ -123,8 +119,7 @@ export class AppComponent {
       } else {
         this.data.error(data['message']);
       }
-      //      console.log(this.itemData);
-      //      console.log(this.itemArray);
+
 
     } catch (error) {
       this.data.error(error['message']);
