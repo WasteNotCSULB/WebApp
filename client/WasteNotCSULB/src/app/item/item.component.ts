@@ -42,7 +42,7 @@ export class ItemComponent implements OnInit {
             } else if (this.item.bin.name === 'Landfill') {
               this.binType = 3;
             }
-            
+
           }
         })
         .catch(error => this.data.error(error['message']));

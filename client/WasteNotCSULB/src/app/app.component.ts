@@ -1,4 +1,4 @@
-import { Component,HostListener,ElementRef,Directive } from '@angular/core';
+import { Component, HostListener, ElementRef, Directive } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from './data.service';
 
@@ -37,7 +37,7 @@ export class AppComponent {
     private data: DataService,
     private activatedRoute: ActivatedRoute,
     private rest: RestApiService,
-    private eleRef:ElementRef
+    private eleRef: ElementRef
   ) {
     this.data.getProfile();
     this.activatedRoute.params.subscribe(res => {
@@ -45,7 +45,7 @@ export class AppComponent {
     });
   }
 
-  jumpToTopPage(){
+  jumpToTopPage() {
     window.scrollTo(0, 0);
   }
 
