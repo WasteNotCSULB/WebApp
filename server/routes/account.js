@@ -10,37 +10,37 @@ const checkJWT = require('../middlewares/check-jwt');
 
 // Status: good
 router.post('/signup', (req, res, next) => {
- let user = new User();
- user.name = req.body.name;
- user.email = req.body.email;
- user.password = req.body.password;
- user.picture = user.gravatar();
- user.isAdmin = req.body.isAdmin;
+  let user = new User();
+  user.name = req.body.name;
+  user.email = req.body.email;
+  user.password = req.body.password;
+  user.picture = user.gravatar();
+  user.isAdmin = req.body.isAdmin;
 
- User.findOne({ email: req.body.email }, (err, existingUser) => {
-  if (existingUser) {
-    res.json({
-      success: false,
-      message: 'Account with that email is already exist'
-    });
+  User.findOne({ email: req.body.email }, (err, existingUser) => {
+    if (existingUser) {
+      res.json({
+        success: false,
+        message: 'Account with that email is already exist'
+      });
 
-  } else {
-    user.save();
+    } else {
+      user.save();
 
-    var token = jwt.sign({
-      user: user
-    }, config.secret, {
-      expiresIn: '7d'
-    });
+      var token = jwt.sign({
+        user: user
+      }, config.secret, {
+          expiresIn: '7d'
+        });
 
-    res.json({
-      success: true,
-      message: 'Sign up successful. Enjoy your token',
-      token: token
-    });
-  }
+      res.json({
+        success: true,
+        message: 'Sign up successful. Enjoy your token',
+        token: token
+      });
+    }
 
- });
+  });
 });
 
 // 4.11.18 2:25 pm login route works
@@ -67,8 +67,8 @@ router.post('/login', (req, res, next) => {
         var token = jwt.sign({
           user: user
         }, config.secret, {
-          expiresIn: '7d'
-        });
+            expiresIn: '7d'
+          });
 
         res.json({
           success: true,
