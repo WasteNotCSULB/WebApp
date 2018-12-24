@@ -136,7 +136,6 @@ router.get('/itemsRandom', (req, res, next) => {
 });
 
 function shuffle(array) {
-  console.log('333shufffling');
   let counter = array.length;
 
   // While there are elements in the array
@@ -336,8 +335,7 @@ router.get('/item/:id', (req, res, next) => {
 });
 
 router.delete('/itemDelete/:id', checkJWT, verifyAdmin, (req, res, next) => {
-  //console.log(JSON.stringify(req.body));
-  console.log(req.params.id);
+
   Item.remove({ _id: req.params.id }, function (err) {
     if (err) {
       return err;
@@ -358,10 +356,6 @@ Edit an Item
 router.post('/item/:id', checkJWT, verifyAdmin, (req, res, next) => {
   Item.findOne({ _id: req.params.id }, (err, item) => {
     if (err) return next(err);
-
-
-    console.log("&&&& req body tipRecycleWrong");
-    console.log(req.body.tipRecycleWrong);
 
 
     if (req.body.title) item.title = req.body.title;

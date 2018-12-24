@@ -1,4 +1,4 @@
-import { Component,HostListener,ElementRef,Directive } from '@angular/core';
+import { Component, HostListener, ElementRef, Directive } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from './data.service';
 
@@ -37,7 +37,7 @@ export class AppComponent {
     private data: DataService,
     private activatedRoute: ActivatedRoute,
     private rest: RestApiService,
-    private eleRef:ElementRef
+    private eleRef: ElementRef
   ) {
     this.data.getProfile();
     this.activatedRoute.params.subscribe(res => {
@@ -45,7 +45,7 @@ export class AppComponent {
     });
   }
 
-  jumpToTopPage(){
+  jumpToTopPage() {
     window.scrollTo(0, 0);
   }
 
@@ -70,13 +70,9 @@ export class AppComponent {
   search() {
     if (this.searchTerm) {
       this.collapse();
-      //this.router.navigate(['search', { query: this.searchTerm }]);
-
-      //
-
 
     }
-    this.searchTerm = null; // https://stackoverflow.com/questions/41483914/clearing-an-input-text-field-in-angular2
+    this.searchTerm = null;
   }
 
   selectItemName(name) {
