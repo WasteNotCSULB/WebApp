@@ -10,7 +10,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "faker": "^4.1.0",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.7.5",
     "mongoose-algolia": "^1.7.1",
     "mongoose-unique-validator": "^2.0.1",
